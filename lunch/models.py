@@ -1,10 +1,10 @@
 from django.db import models
-
+from datetime import date
 # Create your models here.
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=50)
-    dataRegister = models.DateField(auto_now_add=True)
+    dataRegister = models.DateField(auto_now_add=False,default=date.today)
     stars = models.IntegerField(default=0) 
     menuSegunda = models.CharField(max_length=150,null=True, blank=True)
     menuTerca = models.CharField(max_length=150,null=True, blank=True)

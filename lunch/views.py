@@ -13,9 +13,15 @@ def loginUser(request,phoneUser,passwordUser):
       return JsonResponse({'error':'Usuario invalido','code':'01','rigthMethod':request.method})
     return JsonResponse({'error':'method invalido','code':'00','rigthMethod':'POST'})
 
-def getListRestaurants(request):
+def getListRestaurantsOfDay(request):
   if request.method == 'GET':
    return HttpResponse(serializers.serialize("json", Restaurant.objects.filter(dataRegister=date.today())))
+  return JsonResponse({'error':'method invalido','code':'00','rigthMethod':'GET'})
+
+def getlistRankingOfToday(request):
+  if request.method == 'GET':
+   listRestaurant = Restaurant.objects.filter(dataRegister=date.today()).order_by('-stars')[:3]
+   return HttpResponse(serializers.serialize("json", listRestaurant))
   return JsonResponse({'error':'method invalido','code':'00','rigthMethod':'GET'})
 
 def getlistUsers(request):
@@ -50,7 +56,7 @@ def validatePristineVoteingUser(idUser):
     if(datetime.now().strftime('%D/%m/%Y') == datetime.now().strftime(format(user[0].votaingDate, "%D/%m/%Y"))):return False
   return True
 
-#funções set's, updates e incrementos no banco de dados
+#funções set's, updates e incrementos no banco de dados restaurantes e users
 def setVotoIncrementeRestaurant(idRestaurant,idUser):
   restaurant = Restaurant.objects.filter(id=idRestaurant)
   if(restaurant):
