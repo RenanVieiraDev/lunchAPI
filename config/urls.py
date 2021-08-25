@@ -9,5 +9,7 @@ urlpatterns = [
     path('v1/listRestaurantsOfDay/',views.getListRestaurantsOfDay,name="listRestaurantsOfDay"), #GET
     path('v1/users_list/',views.getlistUsers,name="getUsersList"), #GET
     path('v1/rankingOfToday/',views.getlistRankingOfToday,name="getlistRankingOfToday"), #GET
+    path('v1/winningRestaurantToDay/',views.getWinningRestaurant,name="getWinningRestaurant"), #GET
+    path('v1/resetRestaurantToVoteingToday/<listRestaurantsId>/',views.resetRestaurantForVoteing,name="resetRestaurantForVoteing"), #GET
     path('v1/voting/<idRestaurant>/<idUser>/',views.setVoteing,name="setVoteing"),#PUT
 ]
