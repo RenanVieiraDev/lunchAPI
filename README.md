@@ -52,7 +52,7 @@ para cada dia da semana.
       o metodo usado é o (GET)
         não a parametros nesta rota.
      
-     http://127.0.0.1:8000/v1/rankingOfToday/
+     http://127.0.0.1:8000/v1/winningRestaurantToDay/
       Esta rota mostra o restaurante vencedor no dia,
       o metodo usado é o (GET)
         não a parametros nesta rota.
